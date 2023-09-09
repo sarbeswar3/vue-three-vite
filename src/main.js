@@ -17,6 +17,12 @@ const vuetify = createVuetify({
 // pages
 import Home from './pages/Home.vue';
 import About from './pages/About.vue';
+import SignIn from './pages/auth/SignIn.vue';
+import SignUp from './pages/auth/SignUp.vue';
+
+// app
+import Main from './app/Main.vue';
+import Dashboard from './app/Dashboard.vue';
 
 
 // router
@@ -30,6 +36,32 @@ const routes = [
         path: '/about',
         component: About,
         name: 'about'
+    },
+    {
+        path: '/signin',
+        component: SignIn,
+        name: 'signin'
+    },
+    {
+        path: '/signup',
+        component: SignUp,
+        name: 'signup'
+    },
+    {
+        path: '/app',
+        component: Main,
+        name: 'app',
+        children: [
+            {
+                path: '/',
+                redirect: { name: 'dashboard' },
+            },
+            {
+                path: '/app/dashboard',
+                component: Dashboard,
+                name: 'dashboard'
+            }
+        ]
     }
 ];
 
